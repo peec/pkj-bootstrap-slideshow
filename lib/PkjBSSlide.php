@@ -19,6 +19,8 @@ class PkjBSSlide extends PkjCoreChild{
 		if ($post_id) {
 			$terms = get_the_terms($post_id, 'slideshow');
 			
+			if (!$terms) return;
+			
 			foreach ($terms as $term) {
 				$args = array (
 						'post_type' => 'attachment',
@@ -79,12 +81,8 @@ class PkjBSSlide extends PkjCoreChild{
 	public function hook_template () {
 		global $post;
 		
-		$out = false;
-		$taxs = get_post_taxonomies();
-		// If we have a slideshow..
-		if (in_array('slideshow', $taxs)) {
-			$out = $this->slideshow_shortcode(array('post_id' => $post->ID));
-		}
+		$out = $this->slideshow_shortcode(array('post_id' => $post->ID));
+		
 		
 		$slideshow['output'] = $out;
 		
