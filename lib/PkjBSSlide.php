@@ -81,7 +81,7 @@ class PkjBSSlide extends PkjCoreChild{
 	public function hook_template () {
 		global $post;
 		
-		$out = $this->slideshow_shortcode(array('post_id' => $post->ID));
+		$out = isset($post) ? $this->slideshow_shortcode(array('post_id' => $post->ID)) : "";
 		
 		
 		$slideshow['output'] = $out;
