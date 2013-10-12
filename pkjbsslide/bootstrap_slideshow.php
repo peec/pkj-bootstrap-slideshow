@@ -13,8 +13,8 @@
 	<!-- Wrapper for slides -->
 	<div class="carousel-inner">
 		<?php foreach ($attachments as $i =>  $att):?>
-		<div class="item <?php echo $i == 0 ? 'active' : ''?> item-<?php echo $i?>">
-			<img src="<?php echo $att->guid?>" alt="<?php echo $att->post_title?>" />
+		<div class="item <?php echo $i == 0 ? 'active' : ''?>  item-<?php echo $i?>">
+			<img src="<?php echo wp_get_attachment_url($att->ID)?>" alt="<?php echo $att->post_title?>" />
 			<div class="carousel-caption">
 				<?php if ($att->post_title):?><h3><?php echo $att->post_title?></h3><?php endif?>
 				<?php if ($att->post_excerpt):?><p><?php echo $att->post_excerpt?></p><?php endif?>
